@@ -43,8 +43,7 @@ function App() {
   }, []);
 
     // ADD FUNCTION
-    function addRestaurant(e) {
-      e.preventDefault();
+    function addRestaurant() {
       const newRestaurant = {
         name,
         rating: +rating,
