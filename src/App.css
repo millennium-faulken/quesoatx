@@ -1,8 +1,11 @@
+html {
+  background-color: #FFDB6E;
+}
+
 .main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: #FFDB6E;
 }
 
 .postsContainer {
