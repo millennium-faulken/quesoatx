@@ -43,7 +43,8 @@ function App() {
   }, []);
 
     // ADD FUNCTION
-    function addRestaurant() {
+    function addRestaurant(e) {
+      e.preventDefault();
       const newRestaurant = {
         name,
         rating: +rating,
@@ -79,13 +80,15 @@ function App() {
 
   return (
     <div className="main">
+      <h1>Rate Some Queso!</h1>
       <form className="addPostForm">
+        <input type="text" value={name} placeholder="Restaurant Name" onChange={(e) => setName(e.target.value)}/>
+        <input type="number" value={rating} placeholder="Rate the queso" onChange={(e) => setRating(e.target.value)}/>
+        <input type="text" value={description} placeholder="Description of Queso" onChange={(e) => setDescription(e.target.value)}/>
         <input type="file" onChange={onFileChange} />
-        <input type="number" value={rating} placeholder="RATING" onChange={(e) => setRating(e.target.value)}/>
-        <input type="text" value={name} placeholder="NAME" onChange={(e) => setName(e.target.value)}/>
-        <input type="text" value={description} placeholder="DESC" onChange={(e) => setDescription(e.target.value)}/>
         <button onClick={() => addRestaurant()}>Submit</button>
       </form>
+      <h1>Quesos people have rated:</h1>
       <div className="postsContainer">
         {restaurants.map((post) => {
           console.log(restaurants)

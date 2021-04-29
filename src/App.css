@@ -8,6 +8,10 @@ html {
   align-items: center;
 }
 
+.main h1{
+  text-align: center;
+}
+
 .postsContainer {
   width: 75%;
   display: flex;
@@ -55,6 +59,30 @@ html {
   font-weight: bold;
 }
 
+.addPostForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  align-items: center;
+}
+
+.addPostForm input {
+  width: 175px;
+  margin: 15px;
+  border: 2px solid #BA9B00;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  box-shadow:inset 0px 0px 1px 1px black;
+  outline: none;
+}
+
+.addPostForm input::placeholder {
+  font-weight: bold;
+  font-size: 11px;
+  color: black;
+  text-align: center;
+}
 
 
 @media (max-width: 726px) {
