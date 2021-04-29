@@ -1,38 +1,71 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  background-color: #FFDB6E;
 }
 
-.App-link {
-  color: #61dafb;
+.postsContainer {
+  width: 75%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.post {
+  width: 400px;
+  height: 210px;
+  display: flex;
+  margin: 20px 20px 0px 20px;
+  /* border: 2px solid black; */
+  border-radius: 5px;
+  background-color: white;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.postImg {
+  display: flex;
+  align-items: center;
+}
+
+.postImg img{
+    margin: 5px;
+    width:  200px;
+    height: 200px;
+    object-fit: cover;
+    object-position: center;
+}
+
+.postData {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.postData p {
+  margin: 0px;
+}
+
+.restaurantName {
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+
+
+@media (max-width: 726px) {
+ 
+  .postImg img{
+    margin: 5px;
+    width:  100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: center;
   }
-  to {
-    transform: rotate(360deg);
+
+  .post {
+    width: 300px;
+    height: 110px;
   }
+
 }

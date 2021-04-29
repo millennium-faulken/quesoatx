@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import firebase from './firebase';
 import { v4 as uuidv4 } from 'uuid';
+import "./App.css"
 // import { app }  from './firebase';
 
 // const db = app.firestore();
@@ -23,7 +24,6 @@ function App() {
 
   const ref = firebase.firestore().collection('restaurants');
 
-  // GET FUNCTION
   function getRestaurants() {
     setLoading(true);
     ref
@@ -39,6 +39,7 @@ function App() {
 
   useEffect(() => {
     getRestaurants();
+    // eslint-disable-next-line
   }, []);
 
     // ADD FUNCTION
@@ -49,8 +50,10 @@ function App() {
         description,
         picture: picture,
         id: uuidv4(),
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        lastUpdate: firebase.firestore.FieldValue.serverTimestamp(),
       };
-  
+
       ref
         .doc(newRestaurant.id)
         .set(newRestaurant)
@@ -59,28 +62,50 @@ function App() {
         });
     }
 
+    // function editPost(post) {
+    //   const updatedPost = {
+    //     rating: +rating,
+    //     lastUpdate: firebase.firestore.FieldValue.serverTimestamp(),
+    //   };
+    //   setLoading();
+    //   console.log(post)
+    //   ref
+    //     .doc(post.id)
+    //     .update(updatedPost)
+    //     .catch((err) => {
+    //       console.error(err);
+    //     });
+    // }
+
   return (
-    <>
-      <form >
+    <div className="main">
+      <form className="addPostForm">
         <input type="file" onChange={onFileChange} />
         <input type="number" value={rating} placeholder="RATING" onChange={(e) => setRating(e.target.value)}/>
         <input type="text" value={name} placeholder="NAME" onChange={(e) => setName(e.target.value)}/>
         <input type="text" value={description} placeholder="DESC" onChange={(e) => setDescription(e.target.value)}/>
         <button onClick={() => addRestaurant()}>Submit</button>
       </form>
-      <ul>
-        {restaurants.map((withQueso) => {
+      <div className="postsContainer">
+        {restaurants.map((post) => {
           console.log(restaurants)
           return (
-            <li key={withQueso.id}>
-              <img width="100" height="100" src={withQueso.picture} alt={withQueso.name} />
-              <p>{withQueso.name}</p>
-              <p>{withQueso.rating}</p>
-            </li>
+              <div className="post">
+                <div className="postImg">
+                  <img  src={post.picture} alt={post.name} />
+                </div>
+                <div className="postData">
+                  <p className="restaurantName">{post.name}</p>
+
+                  <p className="quesoRating">Rating: {post.rating}</p> 
+
+                  <p className="desc">{post.description}</p>
+                </div>
+              </div>
           );
         })}
-      </ul>
-    </>
+      </div> 
+    </div>
   );
 }
 
